@@ -1,0 +1,47 @@
+---
+interface ProjectCardProps {
+ title: string;
+ icons: string[];
+ githubLink?: string;
+ demoLink?: string;
+}
+
+const { title, icons, githubLink, demoLink } = Astro.props;
+import Button from "./Button.astro";
+// import { LINKS } from "../lib/constants";
+import { Icon } from 'astro-icon/components'
+import Card from "./Card/index.astro";
+---
+
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+ <div class="flex flex-col h-full justify-between">
+   <h2 class="text-white text-xl font-bold">
+     {title}
+   </h2>
+
+   <h2 class="text-white text-l font-bold flex gap-2 mb-2 mt-2">
+     {icons.map((iconName:string) => (
+       <Icon name={iconName} />
+     ))}
+   </h2>
+
+   <div class="flex gap-4">
+     {demoLink && (
+       <a href={demoLink} aria-label="demo site" target="_blank">
+         <Button aria-label="demo site">
+           <Icon name="ri:computer-fill" class="h-6" />
+           <span class="sr-only">Demo Site</span>
+         </Button>
+       </a>
+     )}
+     {githubLink && (
+       <a href={githubLink} aria-label="github repository" target="_blank">
+         <Button aria-label="github repository">
+           <Icon name="ri:github-fill" class="h-6" />
+           <span class="sr-only">GitHub</span>
+         </Button>
+       </a>
+     )}
+   </div>
+ </div>
+</Card>

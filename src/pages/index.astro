@@ -7,6 +7,10 @@ import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
 import Globe from "../components/Globe";
+import Button from "../components/Button.astro";
+import Project from "../components/Project.astro";
+import { LINKS } from "../lib/constants";
+import { Icon } from 'astro-icon/components'
 ---
 
 <script>
@@ -41,33 +45,32 @@ import Globe from "../components/Globe";
     <IntroCard />
     <AboutMe />
     <ContactsCard />
-    <TimeZone />
-    <Now />
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-2"
-      title="Countries I visited"
-      href="travel"
-      colorText="text-neutral-900"
-    >
-      <div class="h-full w-full absolute inset-0 -z-10">
-        <Globe client:load />
-      </div>
-    </Card>
+    <Project
+      title="Order Management System"
+      icons={["ri:nextjs-fill", "mdi:language-typescript", "ri:reactjs-fill"]}
+      demoLink={LINKS.proj1}
+    />
+    <Project
+      title="SVD Image Compression"
+      icons={["ri:nextjs-fill", "mdi:language-python","mdi:aws", "mdi:docker", "mdi:terraform"]}
+      githubLink={LINKS.proj2_git}
+      demoLink={LINKS.proj2_demo}
+    />
+    <Project
+      title="Teamcook"
+      icons={["mdi:language-python","ri:reactjs-fill","mdi:material-ui", "ri:javascript-fill", "mdi:bread-slice"]}
+      githubLink={LINKS.proj3}
+    />
+    <Project
+      title="Youtube Clone"
+      icons={["ri:nextjs-fill", "mdi:language-python", "mdi:google-cloud"]}
+      demoLink={LINKS.proj4}
+    />
     <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-2 flex gap-4"
       title="My Résumé"
       href="./tat_chan_resume.pdf"
     />
-    <!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs">
-        © 2024 · Crafted with ♥️ using <a
-          href="https://astro.build/"
-          target="_blank"
-          class="text-red-500">Astro</a
-        > by Gianmarco.
-      </p>
-    </Card> -->
   </main>
 </Layout>
